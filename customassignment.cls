@@ -49,20 +49,20 @@
 %-------------------------------------------------------------------------------
 % Custom commands
 %-------------------------------------------------------------------------------
-\newcommand{\logo}{}
+\newcommand{\logo}{Logo}
 
-\newcommand{\course}{}
-\newcommand{\term}{}
-\newcommand{\docent}{}
-\newcommand{\tai}{}
-\newcommand{\taii}{}
+\newcommand{\course}{Course}
+\newcommand{\term}{Term}
+\newcommand{\docent}{Docent}
+\newcommand{\tai}{Teaching assistant 1}
+\newcommand{\taii}{Teaching assistant 2}
 
-\newcommand{\sheetname}{}
-\newcommand{\sheetnumber}{}
-\newcommand{\assignmentname}{}
+\newcommand{\sheetname}{Assignment sheet}
+\newcommand{\sheetnumber}{1}
+\newcommand{\assignmentname}{Assignment}
 
-\newcommand{\license}{}
-\newcommand{\colophon}{}
+\newcommand{\license}{License}
+\newcommand{\colophon}{Colophon}
 
 %-------------------------------------------------------------------------------
 % Overall layout
