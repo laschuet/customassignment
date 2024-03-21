@@ -106,7 +106,7 @@
     \begin{center}
         \logo\par
         {\small\course\\\term\par}
-        {\small\docent\\\tai\\taii\par}
+        {\small\docent\\\tai\\\taii\par}
         \vspace{2\baselineskip}
         {\LARGE\bfseries\sheetname~\sheetnumber}
     \end{center}
