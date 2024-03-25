@@ -1,6 +1,6 @@
 # customassignment
 
-[![license](https://img.shields.io/badge/license-LPPL-blue.svg)](https://github.com/laschuet/customassignment/blob/master/LICENSE.txt)
+[![license](https://img.shields.io/badge/license-LPPL--1.3c-blue.svg)](https://github.com/laschuet/customassignment/blob/master/LICENSE.txt)
 
 A LaTeX document class for creating assignments.
 
