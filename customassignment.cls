@@ -15,7 +15,7 @@
 % This work consists of the file customassignment.cls.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{customassignment}[2024/03/21 v1.0 customassignment]
+\ProvidesClass{customassignment}[2024/03/21 v1.1 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -92,12 +92,13 @@
 %-------------------------------------------------------------------------------
 % Pages
 %-------------------------------------------------------------------------------
-\newcommand{\headstyle}{\tiny}
-\newcommand{\footstyle}{\tiny}
-\makeoddhead{plain}{}{\headstyle\license}{}
-\makeevenhead{plain}{}{\headstyle\license}{}
-\makeoddfoot{plain}{\footstyle\colophon}{}{\footstyle\thepage}
-\makeevenfoot{plain}{\footstyle\colophon}{}{\footstyle\thepage}
+\newcommand{\licensestyle}{\tiny}
+\newcommand{\pagenumberstyle}{\small}
+\newcommand{\colophonstyle}{\tiny}
+\makeoddhead{plain}{}{\licensestyle\license}{}
+\makeevenhead{plain}{}{\licensestyle\license}{}
+\makeoddfoot{plain}{\colophonstyle\colophon}{}{\pagenumberstyle\thepage}
+\makeevenfoot{plain}{\colophonstyle\colophon}{}{\pagenumberstyle\thepage}
 
 %-------------------------------------------------------------------------------
 % Title
