@@ -14,8 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{customassignment}[2024/03/21 v1.1 customassignment]
+\ProvidesClass{customassignment}[2024/08/09 v1.2 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -49,20 +48,20 @@
 %-------------------------------------------------------------------------------
 % Custom commands
 %-------------------------------------------------------------------------------
-\newcommand{\logo}{Logo}
+\NewDocumentCommand\logo{}{Logo}
 
-\newcommand{\course}{Course}
-\newcommand{\term}{Term}
-\newcommand{\docent}{Docent}
-\newcommand{\tai}{Teaching assistant 1}
-\newcommand{\taii}{Teaching assistant 2}
+\NewDocumentCommand\course{}{Course}
+\NewDocumentCommand\term{}{Term}
+\NewDocumentCommand\docent{}{Docent}
+\NewDocumentCommand\tai{}{Teaching assistant 1}
+\NewDocumentCommand\taii{}{Teaching assistant 2}
 
-\newcommand{\sheetname}{Assignment sheet}
-\newcommand{\sheetnumber}{1}
-\newcommand{\assignmentname}{Assignment}
+\NewDocumentCommand\sheetname{}{Assignment sheet}
+\NewDocumentCommand\sheetnumber{}{1}
+\NewDocumentCommand\assignmentname{}{Assignment}
 
-\newcommand{\license}{License}
-\newcommand{\colophon}{Colophon}
+\NewDocumentCommand\license{}{License}
+\NewDocumentCommand\colophon{}{Colophon}
 
 %-------------------------------------------------------------------------------
 % Overall layout
@@ -92,9 +91,9 @@
 %-------------------------------------------------------------------------------
 % Pages
 %-------------------------------------------------------------------------------
-\newcommand{\licensestyle}{\tiny}
-\newcommand{\pagenumberstyle}{\small}
-\newcommand{\colophonstyle}{\tiny}
+\NewDocumentCommand\licensestyle{}{\tiny}
+\NewDocumentCommand\pagenumberstyle{}{\small}
+\NewDocumentCommand\colophonstyle{}{\tiny}
 \makeoddhead{plain}{}{\licensestyle\license}{}
 \makeevenhead{plain}{}{\licensestyle\license}{}
 \makeoddfoot{plain}{\colophonstyle\colophon}{}{\pagenumberstyle\thepage}
@@ -103,7 +102,7 @@
 %-------------------------------------------------------------------------------
 % Title
 %-------------------------------------------------------------------------------
-\renewcommand{\maketitle}{%
+\RenewDocumentCommand\maketitle{}{%
     \begin{center}
         \logo\par
         {\small\course\\\term\par}
@@ -116,7 +115,7 @@
 %-------------------------------------------------------------------------------
 % Sections
 %-------------------------------------------------------------------------------
-\renewcommand\thesection{\assignmentname~\arabic{section}}
+\RenewDocumentCommand\thesection{}{\assignmentname~\arabic{section}}
 
 %-------------------------------------------------------------------------------
 % Lists
