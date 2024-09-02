@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/08/09 v1.2 customassignment]
+\ProvidesClass{customassignment}[2024/09/02 v1.3 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
