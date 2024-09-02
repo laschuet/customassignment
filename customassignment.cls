@@ -59,12 +59,12 @@
 \NewDocumentCommand\abbrassignmentlabel{}{assignment}
 \NewDocumentCommand\abbrfigurelabel{}{figure}
 \NewDocumentCommand\abbrtablelabel{}{table}
-\NewDocumentCommand\labelassignment{m}{\abbrassignmentlabel:#1}
-\NewDocumentCommand\labelfigure{m}{\abbrfigurelabel:#1}
-\NewDocumentCommand\labeltable{m}{\abbrtablelabel:#1}
-\NewDocumentCommand\refassignment{m}{\assignmentname~\abbrassignmentlabel:#1}
-\NewDocumentCommand\reftfigure{m}{\figurename~\abbrfigurelabel:#1}
-\NewDocumentCommand\reftable{m}{\tablename~\abbrtablelabel:#1}
+\NewDocumentCommand\labelassignment{m}{\label{\abbrassignmentlabel:#1}}
+\NewDocumentCommand\labelfigure{m}{\label{\abbrfigurelabel:#1}}
+\NewDocumentCommand\labeltable{m}{\label{\abbrtablelabel:#1}}
+\NewDocumentCommand\refassignment{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
+\NewDocumentCommand\reftfigure{m}{\figurename~\ref{\abbrfigurelabel:#1}}
+\NewDocumentCommand\reftable{m}{\tablename~\ref{\abbrtablelabel:#1}}
 
 %-------------------------------------------------------------------------------
 % Custom commands
