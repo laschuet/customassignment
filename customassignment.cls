@@ -54,7 +54,7 @@
 % Taken from https://tex.stackexchange.com/a/63233
 \ExplSyntaxOn
 \DeclareExpandableDocumentCommand{\IfNoValueOrEmptyTF}{mmm}{%
-    \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF {#1} {#2} {#3}}}
+    \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF{#1}{#2}{#3}}}
 \ExplSyntaxOff
 
 \NewDocumentCommand\abbrassignmentlabel{}{assignment}
