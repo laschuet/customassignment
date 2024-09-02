@@ -63,7 +63,7 @@
 \NewDocumentCommand\labelfigure{m}{\label{\abbrfigurelabel:#1}}
 \NewDocumentCommand\labeltable{m}{\label{\abbrtablelabel:#1}}
 \NewDocumentCommand\refassignment{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
-\NewDocumentCommand\reftfigure{m}{\figurename~\ref{\abbrfigurelabel:#1}}
+\NewDocumentCommand\reffigure{m}{\figurename~\ref{\abbrfigurelabel:#1}}
 \NewDocumentCommand\reftable{m}{\tablename~\ref{\abbrtablelabel:#1}}
 
 %-------------------------------------------------------------------------------
