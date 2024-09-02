@@ -64,8 +64,7 @@
 \NewDocumentCommand\course{}{Course}
 \NewDocumentCommand\term{}{Term}
 \NewDocumentCommand\docent{}{Docent}
-\NewDocumentCommand\tai{}{Teaching assistant 1}
-\NewDocumentCommand\taii{}{Teaching assistant 2}
+\NewDocumentCommand\tas{}{Teaching assistant~1\\teaching assistant~2\\\ldots\\teaching assistant~$n$}
 
 \NewDocumentCommand\sheetname{}{Assignment sheet}
 \NewDocumentCommand\sheetnumber{}{1}
@@ -117,7 +116,7 @@
     \begin{center}
         \logo\par
         {\small\course\\\term\par}
-        {\small\docent\\\tai\\\taii\par}
+        {\small\docent\\\tas\par}
         \vspace{2\baselineskip}
         {\LARGE\bfseries\sheetname~\sheetnumber}
     \end{center}
