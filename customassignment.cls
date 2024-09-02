@@ -145,4 +145,4 @@
 % Lists
 %-------------------------------------------------------------------------------
 \newlist{subtasks}{enumerate}{1}
-\setlist[subtasks]{label=(\alph*), ref=\emph{\alph*},leftmargin=*}
+\setlist[subtasks]{label=(\alph*),ref=\emph{\alph*},leftmargin=*}
