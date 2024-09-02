@@ -139,10 +139,10 @@
 \maxsecnumdepth{subsection}
 \renewcommand\thesection{\arabic{section}}
 \titleformat{\section}{\large\bfseries\raggedright}{\assignmentname~\thesection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
-\titleformat{\subsection}[runin]{\large\raggedright}{(\thesubsection)}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\raggedright}{\thesubsection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
 
 %-------------------------------------------------------------------------------
 % Lists
 %-------------------------------------------------------------------------------
-\setlist{leftmargin=*}
-\setlist[enumerate, 1]{label=\theenumi), ref=\emph{\theenumi}}
+\newlist{subtasks}{enumerate}{1}
+\setlist[subtasks]{label=(\alph*), ref=\emph{\alph*},leftmargin=*}
