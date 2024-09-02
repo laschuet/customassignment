@@ -56,6 +56,10 @@
     \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF {#1} {#2} {#3}}}
 \ExplSyntaxOff
 
+\NewDocumentCommand\abbrassignmentlabel{}{assignment}
+\NewDocumentCommand\labelassignment{m}{\abbrassignmentlabel:#1}
+\NewDocumentCommand\refassignment{m}{\assignmentname~\abbrassignmentlabel:#1}
+
 %-------------------------------------------------------------------------------
 % Custom commands
 %-------------------------------------------------------------------------------
