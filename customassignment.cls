@@ -57,15 +57,15 @@
     \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF{#1}{#2}{#3}}}
 \ExplSyntaxOff
 
-\NewDocumentCommand\abbrassignmentlabel{}{assignment}
+\NewDocumentCommand\abbrassignmentlabel{}{ass}
 \NewDocumentCommand\abbrfigurelabel{}{figure}
 \NewDocumentCommand\abbrtablelabel{}{table}
-\NewDocumentCommand\labelassignment{m}{\label{\abbrassignmentlabel:#1}}
-\NewDocumentCommand\labelfigure{m}{\label{\abbrfigurelabel:#1}}
-\NewDocumentCommand\labeltable{m}{\label{\abbrtablelabel:#1}}
-\NewDocumentCommand\refassignment{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
-\NewDocumentCommand\reffigure{m}{\figurename~\ref{\abbrfigurelabel:#1}}
-\NewDocumentCommand\reftable{m}{\tablename~\ref{\abbrtablelabel:#1}}
+\NewDocumentCommand\labass{m}{\label{\abbrassignmentlabel:#1}}
+\NewDocumentCommand\labfig{m}{\label{\abbrfigurelabel:#1}}
+\NewDocumentCommand\labtab{m}{\label{\abbrtablelabel:#1}}
+\NewDocumentCommand\refass{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
+\NewDocumentCommand\reffig{m}{\figurename~\ref{\abbrfigurelabel:#1}}
+\NewDocumentCommand\reftab{m}{\tablename~\ref{\abbrtablelabel:#1}}
 
 %-------------------------------------------------------------------------------
 % Custom commands
