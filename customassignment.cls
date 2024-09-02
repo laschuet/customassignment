@@ -58,9 +58,9 @@
 \ExplSyntaxOff
 
 \NewDocumentCommand\abbrassignmentlabel{}{ass}
-\NewDocumentCommand\abbrfigurelabel{}{figure}
-\NewDocumentCommand\abbrtablelabel{}{table}
-\NewDocumentCommand\abbrequationlabel{}{equation}
+\NewDocumentCommand\abbrfigurelabel{}{fig}
+\NewDocumentCommand\abbrtablelabel{}{tab}
+\NewDocumentCommand\abbrequationlabel{}{eq}
 \NewDocumentCommand\labass{m}{\label{\abbrassignmentlabel:#1}}
 \NewDocumentCommand\labfig{m}{\label{\abbrfigurelabel:#1}}
 \NewDocumentCommand\labtab{m}{\label{\abbrtablelabel:#1}}
