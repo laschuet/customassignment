@@ -126,11 +126,10 @@
 %-------------------------------------------------------------------------------
 % Sections
 %-------------------------------------------------------------------------------
+\maxsecnumdepth{subsection}
 \renewcommand\thesection{\arabic{section}}
 \titleformat{\section}{\large\bfseries\raggedright}{\assignmentname~\thesection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
 \titleformat{\subsection}[runin]{\large\raggedright}{(\thesubsection)}{0em}{}
-
-\maxsecnumdepth{subsection}
 
 %-------------------------------------------------------------------------------
 % Lists
