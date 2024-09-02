@@ -44,6 +44,17 @@
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
 \RequirePackage[default]{fontsetup}
+\DisemulatePackage{titlesec}
+\RequirePackage[explicit]{titlesec}
+
+%-------------------------------------------------------------------------------
+% Helpers
+%-------------------------------------------------------------------------------
+% Taken from https://tex.stackexchange.com/a/63233
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\IfNoValueOrEmptyTF}{mmm}{%
+    \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF {#1} {#2} {#3}}}
+\ExplSyntaxOff
 
 %-------------------------------------------------------------------------------
 % Custom commands
@@ -115,7 +126,11 @@
 %-------------------------------------------------------------------------------
 % Sections
 %-------------------------------------------------------------------------------
-\RenewDocumentCommand\thesection{}{\assignmentname~\arabic{section}}
+\renewcommand\thesection{\arabic{section}}
+\titleformat{\section}{\large\bfseries\raggedright}{\assignmentname~\thesection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
+\titleformat{\subsection}[runin]{\large\raggedright}{(\thesubsection)}{0em}{}
+
+\maxsecnumdepth{subsection}
 
 %-------------------------------------------------------------------------------
 % Lists
