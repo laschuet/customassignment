@@ -39,6 +39,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
 \RequirePackage{metalogo}
+\RequirePackage{nicematrix}
 \RequirePackage{pgfplots}
 \RequirePackage{subcaption}
 \RequirePackage{tabularx}
