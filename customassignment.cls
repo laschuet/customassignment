@@ -60,12 +60,15 @@
 \NewDocumentCommand\abbrassignmentlabel{}{ass}
 \NewDocumentCommand\abbrfigurelabel{}{figure}
 \NewDocumentCommand\abbrtablelabel{}{table}
+\NewDocumentCommand\abbrequationlabel{}{equation}
 \NewDocumentCommand\labass{m}{\label{\abbrassignmentlabel:#1}}
 \NewDocumentCommand\labfig{m}{\label{\abbrfigurelabel:#1}}
 \NewDocumentCommand\labtab{m}{\label{\abbrtablelabel:#1}}
+\NewDocumentCommand\labeq{m}{\label{\abbrequationlabel:#1}}
 \NewDocumentCommand\refass{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
 \NewDocumentCommand\reffig{m}{\figurename~\ref{\abbrfigurelabel:#1}}
 \NewDocumentCommand\reftab{m}{\tablename~\ref{\abbrtablelabel:#1}}
+\NewDocumentCommand\refeq{m}{\ref{\abbrequationlabel:#1}}
 
 %-------------------------------------------------------------------------------
 % Custom commands
