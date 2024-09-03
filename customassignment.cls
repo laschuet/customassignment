@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.21 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.22 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -82,23 +82,9 @@
 % Overall layout
 %-------------------------------------------------------------------------------
 \linespread{1.05}
-\settrimmedsize{297mm}{210mm}{*}
-\settrims{0mm}{0mm}
-\setxlvchars[\normalfont\normalsize]
-\setlxvchars[\normalfont\normalsize]
-\settypeblocksize{*}{1.23\lxvchars}{1.618}
-\setbinding{0mm}
+\isopage[11]%
 \setlrmargins{*}{*}{1}
-\setulmargins{*}{*}{1}
-\setheadfoot{\onelineskip}{3\onelineskip}
 \checkandfixthelayout
-
-\NewDocumentCommand\updatetypeblockwidth{m}{
-    \settypeblocksize{*}{#1}{1.618}
-    \setlrmargins{*}{*}{1}
-    \setulmargins{*}{*}{1}
-    \checkandfixthelayout
-}
 
 %-------------------------------------------------------------------------------
 % Paragraphs
