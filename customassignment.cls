@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.15 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.16 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -129,6 +129,14 @@
 \renewcommand\thesection{\arabic{section}}
 \titleformat{\section}{\large\bfseries\raggedright}{\assignmentname~\thesection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
 \titleformat{\subsection}{\normalsize\bfseries\raggedright}{\thesubsection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
+
+%-------------------------------------------------------------------------------
+% Captions
+%-------------------------------------------------------------------------------
+\NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
+\NewDocumentCommand\floatcaptionstyle{}{\resetstyle\small}
+\captionnamefont{\floatcaptionstyle}
+\captiontitlefont{\floatcaptionstyle}
 
 %-------------------------------------------------------------------------------
 % Lists
