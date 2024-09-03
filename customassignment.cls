@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.12 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.13 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -143,7 +143,8 @@
     \begin{tcolorbox}[
             title=\solutionname,
             colback=technikblau!3!basisweiss,
-            colframe=technikblau
+            colframe=technikblau,
+            sharp corners
         ]
         #1
     \end{tcolorbox}
