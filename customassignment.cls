@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.17.2 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.18 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -92,6 +92,13 @@
 \setulmargins{*}{*}{1}
 \setheadfoot{\onelineskip}{3\onelineskip}
 \checkandfixthelayout
+
+\NewDocumentCommand\updatetypeblockwidth{m}{
+    \settypeblocksize{*}{#1}{1.618}
+    \setlrmargins{*}{*}{1}
+    \setulmargins{*}{*}{1}
+    \checkandfixthelayout
+}
 
 %-------------------------------------------------------------------------------
 % Paragraphs
