@@ -126,13 +126,14 @@
 %-------------------------------------------------------------------------------
 % Title
 %-------------------------------------------------------------------------------
+\NewDocumentCommand\customtitle{}{\sheetname~\sheetnumber}
 \RenewDocumentCommand\maketitle{}{%
     \begin{center}
         \logo\par
         {\small\course\\\term\par}
         {\small\docent\\\tas\par}
         \vspace{2\baselineskip}
-        {\LARGE\bfseries\sheetname~\sheetnumber}
+        {\LARGE\bfseries\customtitle}
     \end{center}
 }
 
