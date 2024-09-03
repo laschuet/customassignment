@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.16 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.17 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -59,6 +59,8 @@
     \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF{#1}{#2}{#3}}}
 \ExplSyntaxOff
 
+\NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
+
 %-------------------------------------------------------------------------------
 % Custom commands
 %-------------------------------------------------------------------------------
@@ -100,9 +102,9 @@
 %-------------------------------------------------------------------------------
 % Pages
 %-------------------------------------------------------------------------------
-\NewDocumentCommand\licensestyle{}{\tiny}
-\NewDocumentCommand\pagenumberstyle{}{\small}
-\NewDocumentCommand\colophonstyle{}{\tiny}
+\NewDocumentCommand\licensestyle{}{\resetstyle\tiny}
+\NewDocumentCommand\pagenumberstyle{}{\resetstyle\small}
+\NewDocumentCommand\colophonstyle{}{\resetstyle\tiny}
 \makeoddhead{plain}{}{\licensestyle\license}{}
 \makeevenhead{plain}{}{\licensestyle\license}{}
 \makeoddfoot{plain}{\colophonstyle\colophon}{}{\pagenumberstyle\thepage}
@@ -133,7 +135,6 @@
 %-------------------------------------------------------------------------------
 % Captions
 %-------------------------------------------------------------------------------
-\NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
 \NewDocumentCommand\floatcaptionstyle{}{\resetstyle\small}
 \captionnamefont{\floatcaptionstyle}
 \captiontitlefont{\floatcaptionstyle}
