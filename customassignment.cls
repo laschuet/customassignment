@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.19 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.20 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -120,16 +120,35 @@
 %-------------------------------------------------------------------------------
 % Title
 %-------------------------------------------------------------------------------
-\NewDocumentCommand\customtitle{}{\sheetname~\sheetnumber}
-\RenewDocumentCommand\maketitle{}{%
+\NewDocumentCommand\logostyle{}{}
+\NewDocumentCommand\coursestyle{}{}
+\NewDocumentCommand\termstyle{}{}
+\NewDocumentCommand\titlestyle{}{}
+\NewDocumentCommand\docentstyle{}{}
+\NewDocumentCommand\tasstyle{}{}
+
+\NewDocumentCommand\beforetitleskip{}{\bigskip\medskip}
+
+\NewDocumentCommand\assignmenttitle{}{\sheetname~\sheetnumber}
+
+\NewDocumentCommand\maketitlealpha{}{%
+    \RenewDocumentCommand\logostyle{}{\resetstyle\footnotesize}
+    \RenewDocumentCommand\coursestyle{}{\resetstyle\footnotesize}
+    \RenewDocumentCommand\termstyle{}{\resetstyle\footnotesize}
+    \RenewDocumentCommand\titlestyle{}{\resetstyle\LARGE\bfseries}
+    \RenewDocumentCommand\docentstyle{}{\resetstyle\footnotesize}
+    \RenewDocumentCommand\tasstyle{}{\resetstyle\footnotesize}
     \begin{center}
-        \logo\par
-        {\small\course\\\term\par}
-        {\small\docent\\\tas\par}
-        \vspace{2\baselineskip}
-        {\LARGE\bfseries\customtitle}
+        {\logostyle\logo\\}
+        {\coursestyle\course\\}
+        {\termstyle\term\par}
+        {\docentstyle\docent\\}
+        {\tasstyle\tas\par}
+        {\titlestyle\beforetitleskip\assignmenttitle}
     \end{center}
 }
+
+\RenewDocumentCommand\maketitle{}{\maketitlealpha}
 
 %-------------------------------------------------------------------------------
 % Sections
