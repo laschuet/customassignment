@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.17 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.17.1 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -174,7 +174,7 @@
 \NewDocumentCommand\refass{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
 \NewDocumentCommand\reffig{m}{\figurename~\ref{\abbrfigurelabel:#1}}
 \NewDocumentCommand\reftab{m}{\tablename~\ref{\abbrtablelabel:#1}}
-\NewDocumentCommand\refeq{m}{\ref{\abbrequationlabel:#1}}
+\NewDocumentCommand\refeq{m}{(\ref{\abbrequationlabel:#1})}
 
 %-------------------------------------------------------------------------------
 % Translations
