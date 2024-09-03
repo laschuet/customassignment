@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.20 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.21 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -168,6 +168,7 @@
 %-------------------------------------------------------------------------------
 % Lists
 %-------------------------------------------------------------------------------
+\setlist{nosep}
 \newlist{subtasks}{enumerate}{1}
 \setlist[subtasks]{label=(\alph*),ref=\emph{\alph*},leftmargin=*}
 
