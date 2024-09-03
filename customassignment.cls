@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.14 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.15 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -84,7 +84,7 @@
 \settrims{0mm}{0mm}
 \setxlvchars[\normalfont\normalsize]
 \setlxvchars[\normalsize\normalfont]
-\settypeblocksize{*}{1.4\lxvchars}{1.618}
+\settypeblocksize{*}{1.23\lxvchars}{1.618}
 \setbinding{0mm}
 \setlrmargins{*}{*}{1}
 \setulmargins{*}{*}{1}
