@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.9 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.10 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -43,6 +43,7 @@
 \RequirePackage{pgfplots}
 \RequirePackage{subcaption}
 \RequirePackage{tabularx}
+\RequirePackage{tcolorbox}
 \RequirePackage{tikz}
 \RequirePackage[default]{fontsetup}
 \DisemulatePackage{titlesec}
@@ -150,3 +151,17 @@
 %-------------------------------------------------------------------------------
 \newlist{subtasks}{enumerate}{1}
 \setlist[subtasks]{label=(\alph*),ref=\emph{\alph*},leftmargin=*}
+
+%-------------------------------------------------------------------------------
+% Solutions
+%-------------------------------------------------------------------------------
+\NewDocumentCommand\solutionname{}{Solution}
+\NewDocumentEnvironment{solution}{+b}{
+    \begin{tcolorbox}[
+            title=\solutionname,
+            colback=technikblau!3!basisweiss,
+            colframe=technikblau
+        ]
+        #1
+    \end{tcolorbox}
+}{}
