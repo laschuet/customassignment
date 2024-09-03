@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.11.2 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.12 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -58,19 +58,6 @@
     \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF{#1}{#2}{#3}}}
 \ExplSyntaxOff
 
-\NewDocumentCommand\abbrassignmentlabel{}{ass}
-\NewDocumentCommand\abbrfigurelabel{}{fig}
-\NewDocumentCommand\abbrtablelabel{}{tab}
-\NewDocumentCommand\abbrequationlabel{}{eq}
-\NewDocumentCommand\labass{m}{\label{\abbrassignmentlabel:#1}}
-\NewDocumentCommand\labfig{m}{\label{\abbrfigurelabel:#1}}
-\NewDocumentCommand\labtab{m}{\label{\abbrtablelabel:#1}}
-\NewDocumentCommand\labeq{m}{\label{\abbrequationlabel:#1}}
-\NewDocumentCommand\refass{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
-\NewDocumentCommand\reffig{m}{\figurename~\ref{\abbrfigurelabel:#1}}
-\NewDocumentCommand\reftab{m}{\tablename~\ref{\abbrtablelabel:#1}}
-\NewDocumentCommand\refeq{m}{\ref{\abbrequationlabel:#1}}
-
 %-------------------------------------------------------------------------------
 % Custom commands
 %-------------------------------------------------------------------------------
@@ -98,10 +85,6 @@
 \setlxvchars[\normalsize\normalfont]
 \settypeblocksize{*}{1.4\lxvchars}{1.618}
 \setbinding{0mm}
-%\setlrmargins{26.25mm}{*}{*}
-%\setulmargins{26.25mm}{*}{*}
-%\setlrmargins{*}{*}{1.618}
-%\setulmargins{*}{*}{1.618}
 \setlrmargins{*}{*}{1}
 \setulmargins{*}{*}{1}
 \setheadfoot{\onelineskip}{3\onelineskip}
@@ -165,6 +148,22 @@
         #1
     \end{tcolorbox}
 }{}
+
+%-------------------------------------------------------------------------------
+% Cross referencing
+%-------------------------------------------------------------------------------
+\NewDocumentCommand\abbrassignmentlabel{}{ass}
+\NewDocumentCommand\abbrfigurelabel{}{fig}
+\NewDocumentCommand\abbrtablelabel{}{tab}
+\NewDocumentCommand\abbrequationlabel{}{eq}
+\NewDocumentCommand\labass{m}{\label{\abbrassignmentlabel:#1}}
+\NewDocumentCommand\labfig{m}{\label{\abbrfigurelabel:#1}}
+\NewDocumentCommand\labtab{m}{\label{\abbrtablelabel:#1}}
+\NewDocumentCommand\labeq{m}{\label{\abbrequationlabel:#1}}
+\NewDocumentCommand\refass{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
+\NewDocumentCommand\reffig{m}{\figurename~\ref{\abbrfigurelabel:#1}}
+\NewDocumentCommand\reftab{m}{\tablename~\ref{\abbrtablelabel:#1}}
+\NewDocumentCommand\refeq{m}{\ref{\abbrequationlabel:#1}}
 
 %-------------------------------------------------------------------------------
 % Translations
