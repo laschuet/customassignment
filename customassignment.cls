@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.18 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.19 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -190,7 +190,6 @@
 % because otherwise it could end up in the header or footer when using
 % \leftmark or \rightmark.
 \addto\captionsngerman{%
-    \RenewDocumentCommand\sheetname{}{Übungsblatt}%
     \RenewDocumentCommand\assignmentname{}{Aufgabe}%
     \RenewDocumentCommand\solutionname{}{Lösung}%
 }
