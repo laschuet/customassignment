@@ -45,6 +45,7 @@
 \RequirePackage{tabularx}
 \RequirePackage{tcolorbox}
 \RequirePackage{tikz}
+\PassOptionsToPackage{math-style=ISO,bold-style=ISO}{unicode-math}
 \RequirePackage[default]{fontsetup}
 \DisemulatePackage{titlesec}
 \RequirePackage[explicit]{titlesec}
