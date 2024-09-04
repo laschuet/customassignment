@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/04 v1.23 customassignment]
+\ProvidesClass{customassignment}[2024/09/04 v1.24 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -32,7 +32,6 @@
 \RequirePackage{amssymb}
 \RequirePackage{amstext}
 \RequirePackage{amsthm}
-\RequirePackage{booktabs}
 \RequirePackage{babel}
 \RequirePackage{ccicons}
 \RequirePackage{enumitem}
@@ -42,7 +41,6 @@
 \RequirePackage{nicematrix}
 \RequirePackage{pgfplots}
 \RequirePackage{subcaption}
-\RequirePackage{tabularx}
 \RequirePackage{tcolorbox}
 \RequirePackage{tikz}
 \PassOptionsToPackage{math-style=ISO,bold-style=ISO}{unicode-math}
