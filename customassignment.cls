@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/04 v1.24 customassignment]
+\ProvidesClass{customassignment}[2024/09/04 v1.25 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -45,18 +45,10 @@
 \RequirePackage{tikz}
 \PassOptionsToPackage{math-style=ISO,bold-style=ISO}{unicode-math}
 \RequirePackage[default]{fontsetup}
-\DisemulatePackage{titlesec}
-\RequirePackage{titlesec}
 
 %-------------------------------------------------------------------------------
 % Helpers
 %-------------------------------------------------------------------------------
-% Taken from https://tex.stackexchange.com/a/63233
-\ExplSyntaxOn
-\DeclareExpandableDocumentCommand{\IfNoValueOrEmptyTF}{mmm}{%
-    \IfNoValueTF{#1}{#2}{\tl_if_empty:nTF{#1}{#2}{#3}}}
-\ExplSyntaxOff
-
 \NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
 
 %-------------------------------------------------------------------------------
@@ -139,9 +131,9 @@
 %-------------------------------------------------------------------------------
 \maxsecnumdepth{subsection}
 \renewcommand\thesection{\arabic{section}}
-\titlelabel{\assignmentname~\thetitle\quad}
-\titleformat*{\section}{\large\bfseries\raggedright}
-\titleformat*{\subsection}{\normalsize\bfseries\raggedright}
+\setsecheadstyle{\large\bfseries\raggedright}
+\setsubsecheadstyle{\normalsize\bfseries\raggedright}
+\setsecnumformat{\assignmentname~\csname the#1\endcsname\quad}
 
 %-------------------------------------------------------------------------------
 % Captions
