@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/03 v1.22 customassignment]
+\ProvidesClass{customassignment}[2024/09/03 v1.23 customassignment]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
@@ -48,7 +48,7 @@
 \PassOptionsToPackage{math-style=ISO,bold-style=ISO}{unicode-math}
 \RequirePackage[default]{fontsetup}
 \DisemulatePackage{titlesec}
-\RequirePackage[explicit]{titlesec}
+\RequirePackage{titlesec}
 
 %-------------------------------------------------------------------------------
 % Helpers
@@ -141,8 +141,9 @@
 %-------------------------------------------------------------------------------
 \maxsecnumdepth{subsection}
 \renewcommand\thesection{\arabic{section}}
-\titleformat{\section}{\large\bfseries\raggedright}{\assignmentname~\thesection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
-\titleformat{\subsection}{\normalsize\bfseries\raggedright}{\thesubsection}{0.5em}{\IfNoValueOrEmptyTF{#1}{}{(#1)}}
+\titlelabel{\assignmentname~\thetitle\quad}
+\titleformat*{\section}{\large\bfseries\raggedright}
+\titleformat*{\subsection}{\normalsize\bfseries\raggedright}
 
 %-------------------------------------------------------------------------------
 % Captions
