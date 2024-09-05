@@ -14,8 +14,10 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/04 v1.25 customassignment]
+\ProvidesClass{customassignment}[2024/09/05 v1.26 customassignment]
 
+\newif\if@showsolutions\@showsolutionsfalse
+\DeclareOption{showsolutions}{\@showsolutionstrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
 
@@ -50,6 +52,7 @@
 % Helpers
 %-------------------------------------------------------------------------------
 \NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
+\NewDocumentCommand\hide{m}{\if@showsolutions#1\fi}
 
 %-------------------------------------------------------------------------------
 % Custom commands
@@ -153,15 +156,17 @@
 % Solutions
 %-------------------------------------------------------------------------------
 \NewDocumentCommand\solutionname{}{Solution}
-\NewDocumentEnvironment{solution}{+b}{
-    \begin{tcolorbox}[
-            title=\solutionname,
-            colback=technikblau!3!basisweiss,
-            colframe=technikblau,
-            sharp corners
-        ]
-        #1
-    \end{tcolorbox}
+\NewDocumentEnvironment{solution}{+b}{%
+    \hide{%
+        \begin{tcolorbox}[
+                title=\solutionname,
+                colback=technikblau!3!basisweiss,
+                colframe=technikblau,
+                sharp corners
+            ]
+            #1
+        \end{tcolorbox}
+    }
 }{}
 
 %-------------------------------------------------------------------------------
