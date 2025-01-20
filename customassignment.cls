@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2024/09/05 v1.26 customassignment]
+\ProvidesClass{customassignment}[2025/01/20 v1.27 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -43,7 +43,7 @@
 \RequirePackage{nicematrix}
 \RequirePackage{pgfplots}
 \RequirePackage{subcaption}
-\RequirePackage{tcolorbox}
+\RequirePackage[breakable]{tcolorbox}
 \RequirePackage{tikz}
 \PassOptionsToPackage{math-style=ISO,bold-style=ISO}{unicode-math}
 \RequirePackage[default]{fontsetup}
@@ -162,7 +162,8 @@
                 title=\solutionname,
                 colback=technikblau!3!basisweiss,
                 colframe=technikblau,
-                sharp corners
+                sharp corners,
+                breakable
             ]
             #1
         \end{tcolorbox}
