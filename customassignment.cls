@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/20 v1.28 customassignment]
+\ProvidesClass{customassignment}[2025/01/21 v1.29 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -52,7 +52,7 @@
 % Helpers
 %-------------------------------------------------------------------------------
 \NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
-\NewDocumentCommand\hide{m}{\if@showsolutions#1\fi}
+\NewDocumentCommand\hide{+m}{\if@showsolutions#1\fi}
 
 %-------------------------------------------------------------------------------
 % Custom commands
