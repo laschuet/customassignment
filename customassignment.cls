@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/22 v1.31 customassignment]
+\ProvidesClass{customassignment}[2025/01/22 v2.0 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -155,9 +155,6 @@
 % Lists
 %-------------------------------------------------------------------------------
 \setlist{nosep}
-\newlist{subtasks}{enumerate}{2}
-\setlist[subtasks]{label=(\alph*),ref=\emph{\alph*},leftmargin=*}
-\setlist[subtasks,2]{label=(\roman*),ref=\emph{\roman*}}
 
 %-------------------------------------------------------------------------------
 % Solutions
