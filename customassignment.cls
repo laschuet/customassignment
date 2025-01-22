@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/22 v1.30 customassignment]
+\ProvidesClass{customassignment}[2025/01/22 v1.31 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -52,6 +52,9 @@
 % Helpers
 %-------------------------------------------------------------------------------
 \NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
+\ExplSyntaxOn
+\cs_set_eq:NN\IfEmptyTF\tl_if_blank:nTF
+\ExplSyntaxOff
 
 %-------------------------------------------------------------------------------
 % Custom commands
@@ -133,9 +136,13 @@
 %-------------------------------------------------------------------------------
 \maxsecnumdepth{subsection}
 \renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\alph{subsection}}
 \setsecheadstyle{\large\bfseries\raggedright}
-\setsubsecheadstyle{\normalsize\bfseries\raggedright}
-\setsecnumformat{\assignmentname~\csname the#1\endcsname\quad}
+\setsubsecheadstyle{\normalsize\raggedright}
+\setbeforesubsecskip{1.25ex plus 1ex minus 0.2ex}
+\setaftersubsecskip{-1em}
+\setsechook{\setsecnumformat{\assignmentname~\csname the##1\endcsname\quad}}
+\setsubsechook{\setsecnumformat{(\csname the##1\endcsname)}}
 
 %-------------------------------------------------------------------------------
 % Captions
@@ -184,20 +191,39 @@
 %-------------------------------------------------------------------------------
 \NewDocumentCommand\pointsname{}{Points}
 \NewDocumentCommand\bonusname{}{Bonus}
+
 \NewDocumentCommand\sectionpoints{}{\ref{sectionpoints.\thesection}}
-\NewDocumentCommand\sectionpointswithname{}{(\ref{sectionpoints.\thesection}~\pointsname)}
+\NewDocumentCommand\sectionpointswithname{O{}}{%
+    \IfEmptyTF{#1}
+    {(\sectionpoints~\pointsname)}
+    {(\sectionpoints~\pointsname, #1)}
+}
+\NewDocumentCommand\subsectionpoints{}{\ref{subsectionpoints.\thesection.\thesubsection}}
+\NewDocumentCommand\subsectionpointswithname{O{}}{%
+    \IfEmptyTF{#1}
+    {(\subsectionpoints~\pointsname)}
+    {(\subsectionpoints~\pointsname, #1)}
+}
 \NewDocumentCommand\totalpoints{}{\ref{totalpoints}}
+\NewDocumentCommand\totalpointswithname{}{(\totalpoints~\pointsname)}
+
+\NewDocumentCommand\bonus{m}{%
+    \IfNoValueTF{#1}
+    {(\bonusname)}
+    {(#1~\bonusname)}
+}
 
 \makeatletter
 \NewDocumentCommand\@sectionpoints{}{0}
+\NewDocumentCommand\@subsectionpoints{}{0}
 \NewDocumentCommand\@totalpoints{}{0}
 
 \NewDocumentCommand\points{m}{%
     \xdef\@sectionpoints{\fpeval{\@sectionpoints + #1}}%
+    \xdef\@subsectionpoints{\fpeval{\@subsectionpoints + #1}}%
     \xdef\@totalpoints{\fpeval{\@totalpoints + #1}}%
     (#1)%
 }
-\NewDocumentCommand\bonus{m}{(\bonusname)}
 
 \NewDocumentCommand\@writesectionpoints{}{%
     \protected@write\@auxout{}{%
@@ -205,18 +231,35 @@
     }%
 }
 
+\NewDocumentCommand\@writesubsectionpoints{}{%
+    \protected@write\@auxout{}{%
+        \string\newlabel{subsectionpoints.\thesection.\thesubsection}{{\@subsectionpoints}{\thepage}}%
+    }%
+}
+
 \let\oldsection\section
-\renewcommand{\section}[1]{%
-    \ifnum\value{section} > 0
-        \@writesectionpoints%
-        \xdef\@sectionpoints{0}%
+\RenewDocumentCommand\section{m}{%
+  \ifnum\value{section} > 0
+      \@writesectionpoints%
+      \@writesubsectionpoints%
+      \xdef\@sectionpoints{0}%
+      \xdef\@subsectionpoints{0}%
+  \fi
+  \oldsection{#1}%
+ }
+
+\let\oldsubsection\subsection
+\RenewDocumentCommand\subsection{m}{%
+    \ifnum\value{subsection} > 0
+        \@writesubsectionpoints%
+        \xdef\@subsectionpoints{0}%
     \fi
-    \refstepcounter{section}%
-    \oldsection{#1}%
+    \oldsubsection{#1}%
 }
 
 \AtEndDocument{%
     \@writesectionpoints%
+    \@writesubsectionpoints%
     \protected@write\@auxout{}{%
         \string\newlabel{totalpoints}{{\@totalpoints}{\thepage}}%
     }%
