@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/21 v1.29 customassignment]
+\ProvidesClass{customassignment}[2025/01/22 v1.30 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -52,7 +52,6 @@
 % Helpers
 %-------------------------------------------------------------------------------
 \NewDocumentCommand\resetstyle{}{\rmfamily\upshape\mdseries}
-\NewDocumentCommand\hide{+m}{\if@showsolutions#1\fi}
 
 %-------------------------------------------------------------------------------
 % Custom commands
@@ -158,7 +157,8 @@
 %-------------------------------------------------------------------------------
 \NewDocumentCommand\solutionname{}{Solution}
 \NewDocumentEnvironment{solution}{+b}{%
-    \hide{%
+    \begingroup
+    \if@showsolutions
         \begin{tcolorbox}[
                 title=\solutionname,
                 colback=technikblau!3!basisweiss,
@@ -168,8 +168,60 @@
             ]
             #1
         \end{tcolorbox}
-    }
+    \else
+        \setbox0=\vbox{
+            \hsize=\linewidth
+            \parindent=0pt
+            \baselineskip=0pt
+            #1
+        }%
+    \fi
+    \endgroup
 }{}
+
+%-------------------------------------------------------------------------------
+% Points
+%-------------------------------------------------------------------------------
+\NewDocumentCommand\pointsname{}{Points}
+\NewDocumentCommand\bonusname{}{Bonus}
+\NewDocumentCommand\sectionpoints{}{\ref{sectionpoints.\thesection}}
+\NewDocumentCommand\sectionpointswithname{}{(\ref{sectionpoints.\thesection}~\pointsname)}
+\NewDocumentCommand\totalpoints{}{\ref{totalpoints}}
+
+\makeatletter
+\NewDocumentCommand\@sectionpoints{}{0}
+\NewDocumentCommand\@totalpoints{}{0}
+
+\NewDocumentCommand\points{m}{%
+    \xdef\@sectionpoints{\fpeval{\@sectionpoints + #1}}%
+    \xdef\@totalpoints{\fpeval{\@totalpoints + #1}}%
+    (#1)%
+}
+\NewDocumentCommand\bonus{m}{(\bonusname)}
+
+\NewDocumentCommand\@writesectionpoints{}{%
+    \protected@write\@auxout{}{%
+        \string\newlabel{sectionpoints.\thesection}{{\@sectionpoints}{\thepage}}%
+    }%
+}
+
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+    \ifnum\value{section} > 0
+        \@writesectionpoints%
+        \xdef\@sectionpoints{0}%
+    \fi
+    \refstepcounter{section}%
+    \oldsection{#1}%
+}
+
+\AtEndDocument{%
+    \@writesectionpoints%
+    \protected@write\@auxout{}{%
+        \string\newlabel{totalpoints}{{\@totalpoints}{\thepage}}%
+    }%
+}
+\makeatother
 
 %-------------------------------------------------------------------------------
 % Cross referencing
@@ -196,4 +248,5 @@
 \addto\captionsngerman{%
     \RenewDocumentCommand\assignmentname{}{Aufgabe}%
     \RenewDocumentCommand\solutionname{}{Lösung}%
+    \RenewDocumentCommand\pointsname{}{Punkte}%
 }
