@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/22 v2.1 customassignment]
+\ProvidesClass{customassignment}[2025/01/28 v2.2 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -42,6 +42,7 @@
 \RequirePackage{metalogo}
 \RequirePackage{nicematrix}
 \RequirePackage{pgfplots}
+\RequirePackage{refcount}
 \RequirePackage{subcaption}
 \RequirePackage[breakable]{tcolorbox}
 \RequirePackage{tikz}
@@ -186,23 +187,29 @@
 %-------------------------------------------------------------------------------
 % Points
 %-------------------------------------------------------------------------------
+\NewDocumentCommand\pointname{}{Point}
 \NewDocumentCommand\pointsname{}{Points}
 \NewDocumentCommand\bonusname{}{Bonus}
 
 \NewDocumentCommand\sectionpoints{}{\ref{sectionpoints.\thesection}}
+\NewDocumentCommand\sectionpointsvalue{}{\getrefnumber{sectionpoints.\thesection}}
 \NewDocumentCommand\sectionpointswithname{O{}}{%
     \IfEmptyTF{#1}
-    {(\sectionpoints~\pointsname)}
-    {(\sectionpoints~\pointsname, #1)}
+    {(\sectionpoints~\ifnum\sectionpointsvalue=1\pointname\else\pointsname\fi)}
+    {(\sectionpoints~\ifnum\sectionpointsvalue=1\pointname\else\pointsname\fi\pointsname, #1)}
 }
+
 \NewDocumentCommand\subsectionpoints{}{\ref{subsectionpoints.\thesection.\thesubsection}}
+\NewDocumentCommand\subsectionpointsvalue{}{\getrefnumber{subsectionpoints.\thesection.\thesubsection}}
 \NewDocumentCommand\subsectionpointswithname{O{}}{%
     \IfEmptyTF{#1}
-    {(\subsectionpoints~\pointsname)}
-    {(\subsectionpoints~\pointsname, #1)}
+    {(\subsectionpoints~\ifnum\subsectionpointsvalue=1\pointname\else\pointsname\fi)}
+    {(\subsectionpoints~\ifnum\subsectionpointsvalue=1\pointname\else\pointsname\fi\pointsname, #1)}
 }
+
 \NewDocumentCommand\totalpoints{}{\ref{totalpoints}}
-\NewDocumentCommand\totalpointswithname{}{(\totalpoints~\pointsname)}
+\NewDocumentCommand\totalpointsvalue{}{\getrefnumber{totalpoints}}
+\NewDocumentCommand\totalpointswithname{}{(\totalpoints~\ifnum\totalpointsvalue=1\pointname\else\pointsname\fi)}
 
 \NewDocumentCommand\bonus{m}{%
     \IfNoValueTF{#1}
@@ -289,4 +296,5 @@
     \RenewDocumentCommand\assignmentname{}{Aufgabe}%
     \RenewDocumentCommand\solutionname{}{Lösung}%
     \RenewDocumentCommand\pointsname{}{Punkte}%
+    \RenewDocumentCommand\pointname{}{Punkt}%
 }
