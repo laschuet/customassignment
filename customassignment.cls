@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/28 v2.2.1 customassignment]
+\ProvidesClass{customassignment}[2025/01/28 v2.3 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -207,6 +207,14 @@
     {(\subsectionpoints~\ifnum\subsectionpointsvalue=1\pointname\else\pointsname\fi, #1)}
 }
 
+\NewDocumentCommand\sectionextrapoints{}{\ref{sectionextrapoints.\thesection}}
+\NewDocumentCommand\sectionextrapointsvalue{}{\getrefnumber{sectionextrapoints.\thesection}}
+\NewDocumentCommand\sectionextrapointswithname{O{}}{%
+    \IfEmptyTF{#1}
+    {(\sectionextrapoints~\ifnum\sectionextrapointsvalue=1\pointname\else\pointsname\fi)}
+    {(\sectionextrapoints~\ifnum\sectionextrapointsvalue=1\pointname\else\pointsname\fi, #1)}
+}
+
 \NewDocumentCommand\totalpoints{}{\ref{totalpoints}}
 \NewDocumentCommand\totalpointsvalue{}{\getrefnumber{totalpoints}}
 \NewDocumentCommand\totalpointswithname{}{(\totalpoints~\ifnum\totalpointsvalue=1\pointname\else\pointsname\fi)}
@@ -220,12 +228,18 @@
 \makeatletter
 \NewDocumentCommand\@sectionpoints{}{0}
 \NewDocumentCommand\@subsectionpoints{}{0}
+\NewDocumentCommand\@sectionextrapoints{}{0}
 \NewDocumentCommand\@totalpoints{}{0}
 
 \NewDocumentCommand\points{m}{%
     \xdef\@sectionpoints{\fpeval{\@sectionpoints + #1}}%
     \xdef\@subsectionpoints{\fpeval{\@subsectionpoints + #1}}%
     \xdef\@totalpoints{\fpeval{\@totalpoints + #1}}%
+    (#1)%
+}
+
+\NewDocumentCommand\extrapoints{m}{%
+    \xdef\@sectionextrapoints{\fpeval{\@sectionextrapoints + #1}}%
     (#1)%
 }
 
@@ -241,13 +255,21 @@
     }%
 }
 
+\NewDocumentCommand\@writesectionextrapoints{}{%
+    \protected@write\@auxout{}{%
+        \string\newlabel{sectionextrapoints.\thesection}{{\@sectionextrapoints}{\thepage}}%
+    }%
+}
+
 \let\oldsection\section
 \RenewDocumentCommand\section{m}{%
   \ifnum\value{section} > 0
       \@writesectionpoints%
       \@writesubsectionpoints%
+      \@writesectionextrapoints%
       \xdef\@sectionpoints{0}%
       \xdef\@subsectionpoints{0}%
+      \xdef\@sectionextrapoints{0}%
   \fi
   \oldsection{#1}%
  }
@@ -264,6 +286,7 @@
 \AtEndDocument{%
     \@writesectionpoints%
     \@writesubsectionpoints%
+    \@writesectionextrapoints%
     \protected@write\@auxout{}{%
         \string\newlabel{totalpoints}{{\@totalpoints}{\thepage}}%
     }%
