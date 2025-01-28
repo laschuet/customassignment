@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/28 v2.2 customassignment]
+\ProvidesClass{customassignment}[2025/01/28 v2.2.1 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \DeclareOption{showsolutions}{\@showsolutionstrue}
@@ -196,7 +196,7 @@
 \NewDocumentCommand\sectionpointswithname{O{}}{%
     \IfEmptyTF{#1}
     {(\sectionpoints~\ifnum\sectionpointsvalue=1\pointname\else\pointsname\fi)}
-    {(\sectionpoints~\ifnum\sectionpointsvalue=1\pointname\else\pointsname\fi\pointsname, #1)}
+    {(\sectionpoints~\ifnum\sectionpointsvalue=1\pointname\else\pointsname\fi, #1)}
 }
 
 \NewDocumentCommand\subsectionpoints{}{\ref{subsectionpoints.\thesection.\thesubsection}}
@@ -204,7 +204,7 @@
 \NewDocumentCommand\subsectionpointswithname{O{}}{%
     \IfEmptyTF{#1}
     {(\subsectionpoints~\ifnum\subsectionpointsvalue=1\pointname\else\pointsname\fi)}
-    {(\subsectionpoints~\ifnum\subsectionpointsvalue=1\pointname\else\pointsname\fi\pointsname, #1)}
+    {(\subsectionpoints~\ifnum\subsectionpointsvalue=1\pointname\else\pointsname\fi, #1)}
 }
 
 \NewDocumentCommand\totalpoints{}{\ref{totalpoints}}
