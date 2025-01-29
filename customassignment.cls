@@ -14,10 +14,13 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/28 v2.3 customassignment]
+\ProvidesClass{customassignment}[2025/01/28 v2.4 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
+\newif\if@showsectionlabels\@showsectionlabelsfalse
+
 \DeclareOption{showsolutions}{\@showsolutionstrue}
+\DeclareOption{showsectionlabels}{\@showsectionlabelstrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
 
@@ -271,7 +274,7 @@
       \xdef\@subsectionpoints{0}%
       \xdef\@sectionextrapoints{0}%
   \fi
-  \oldsection{#1}%
+  \oldsection{\if@showsectionlabels#1\fi}%
  }
 
 \let\oldsubsection\subsection
