@@ -14,7 +14,7 @@
 %
 % This work consists of the file customassignment.cls.
 
-\ProvidesClass{customassignment}[2025/01/28 v2.4 customassignment]
+\ProvidesClass{customassignment}[2025/11/03 v2.5 customassignment]
 
 \newif\if@showsolutions\@showsolutionsfalse
 \newif\if@showsectionlabels\@showsectionlabelsfalse
@@ -42,6 +42,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
+\RequirePackage{mathtools}
 \RequirePackage{metalogo}
 \RequirePackage{nicematrix}
 \RequirePackage{pgfplots}
@@ -310,7 +311,7 @@
 \NewDocumentCommand\refass{m}{\assignmentname~\ref{\abbrassignmentlabel:#1}}
 \NewDocumentCommand\reffig{m}{\figurename~\ref{\abbrfigurelabel:#1}}
 \NewDocumentCommand\reftab{m}{\tablename~\ref{\abbrtablelabel:#1}}
-\NewDocumentCommand\refeq{m}{(\ref{\abbrequationlabel:#1})}
+\RenewDocumentCommand\refeq{m}{(\ref{\abbrequationlabel:#1})}
 
 %-------------------------------------------------------------------------------
 % Translations
